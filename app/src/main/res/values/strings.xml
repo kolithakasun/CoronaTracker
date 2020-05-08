@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Corona Tracker</string>
+    <string name="desription_home">ශ්‍රි ලංකාවේ COVID-19 තත්වය</string>
+    <string name="description_dashboard">ලෝකයේ COVID-19 තත්වය</string>
+    <string name="title_home">ශ්‍රි ලංකාවේ</string>
+    <string name="title_dashboard">ලෝකයේ</string>
+    <string name="total">වාර්තා වී ඇති මුලු රෝගීන් ගණන</string>
+    <string name="hospitalized">රොහල් ගතවී ඇති රෝගීන් ගණන</string>
+    <string name="recovered">සුව වු මුලු රෝගීන් ගණන</string>
+    <string name="dead">වාර්තා වී ඇති මරණ ගණන</string>
+    <string name="unsure">සැක සහිත රෝගීන් ගණන</string>
+    <string name="newp">නව රෝගීන් ගණන</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="newdeaths">නව මරණ ගණන</string>
+</resources>
