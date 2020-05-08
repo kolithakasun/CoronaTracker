@@ -10,18 +10,21 @@
     android:layout_marginTop="0dp">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView1"
         android:layout_width="360dp"
         android:layout_height="39dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
         android:gravity="start"
         android:text="@string/description_dashboard"
         android:textAlignment="textStart"
         android:textColor="@color/design_default_color_error"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,21 +32,29 @@
         android:id="@+id/refresh"
         android:layout_width="52dp"
         android:layout_height="25dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:src="@drawable/refresh"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/upTime"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <TextView
         android:id="@+id/upTime"
         android:layout_width="322dp"
         android:layout_height="27dp"
-        android:layout_marginStart="20dp"
-        android:text="TextView"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
         android:textSize="14sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/refresh"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -51,18 +62,23 @@
         android:layout_height="444dp"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginRight="19dp"
         android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upTime">
+        app:layout_constraintTop_toBottomOf="@+id/refresh">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="59dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="10dp">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView32"
                 android:layout_width="165dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -82,12 +98,14 @@
                     android:text="@string/total"
                     android:textAlignment="center"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="RtlCompat" />
 
                 <TextView
                     android:id="@+id/total"
                     android:layout_width="match_parent"
                     android:layout_height="31dp"
+                    android:layout_gravity="center_horizontal"
                     android:textAlignment="center"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="16sp"
@@ -97,11 +115,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:orientation="horizontal">
+            android:layout_height="72dp"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView12"
                 android:layout_width="165dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -114,9 +133,10 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textView41"
                     android:layout_width="match_parent"
                     android:layout_height="33dp"
+                    android:gravity="center_horizontal"
                     android:text="@string/newp"
                     android:textAlignment="center"
                     android:textSize="14sp"
@@ -125,7 +145,8 @@
                 <TextView
                     android:id="@+id/newP"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="31dp"
+                    android:gravity="center_horizontal"
                     android:textAlignment="center"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="16sp"
@@ -135,11 +156,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:orientation="horizontal">
+            android:layout_height="69dp"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView312"
                 android:layout_width="165dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -152,9 +174,10 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textView31"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
+                    android:gravity="center_horizontal"
                     android:text="@string/newdeaths"
                     android:textAlignment="center"
                     android:textSize="14sp"
@@ -164,6 +187,7 @@
                     android:id="@+id/hospitalized"
                     android:layout_width="match_parent"
                     android:layout_height="31dp"
+                    android:gravity="center_horizontal"
                     android:textAlignment="center"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="16sp"
@@ -173,11 +197,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:orientation="horizontal">
+            android:layout_height="63dp"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView33"
                 android:layout_width="165dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -190,9 +215,10 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textView411"
                     android:layout_width="match_parent"
-                    android:layout_height="31dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
                     android:text="@string/recovered"
                     android:textAlignment="center"
                     android:textSize="14sp"
@@ -201,7 +227,8 @@
                 <TextView
                     android:id="@+id/recoverd"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="31dp"
+                    android:gravity="center_horizontal"
                     android:textAlignment="center"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="16sp"
@@ -211,11 +238,12 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="63dp"
-            android:orientation="horizontal">
+            android:layout_height="73dp"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView313"
                 android:layout_width="84dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -231,6 +259,7 @@
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="32dp"
+                    android:gravity="center_horizontal"
                     android:text="@string/dead"
                     android:textAlignment="center"
                     android:textSize="14sp"
@@ -239,7 +268,8 @@
                 <TextView
                     android:id="@+id/dead"
                     android:layout_width="match_parent"
-                    android:layout_height="31dp"
+                    android:layout_height="35dp"
+                    android:gravity="center_horizontal"
                     android:textAlignment="center"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="16sp"
