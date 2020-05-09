@@ -13,4 +13,6 @@
     <string name="title_notifications">ශ්‍රිලංකාවේ රෝහල්</string>
     <string name="newdeaths">නව මරණ ගණන</string>
     <string name="desription_notification">ශ්‍රි ලංකාවේ COVID-19 සදහා ගෙන ඇති රෝහල් සහ එහි දත්ත</string>
+    <string name="title_Countries">රටවල්</string>
+    <string name="contry">රට වල විස්තර</string>
 </resources>

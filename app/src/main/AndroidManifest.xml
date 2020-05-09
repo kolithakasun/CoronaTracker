@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.notifications.SelectHospital"></activity>
+        <activity android:name=".ui.ui.countries.selectcountry"></activity>
+        <activity android:name=".ui.ui.countries.countries" />
+        <activity android:name=".ui.notifications.SelectHospital" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

@@ -12,9 +12,14 @@
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/title_dashboard" />
     <item
-        android:id="@+id/navigation_notifications"
+    android:id="@+id/navigation_notifications"
+    android:icon="@drawable/ic_dashboard_black_24dp"
+    android:title="@string/title_notifications" />
+
+    <item
+        android:id="@+id/navigation_Countries"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_notifications" />
+        android:title="@string/title_Countries" />
 
 
 </menu>

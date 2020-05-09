@@ -22,4 +22,9 @@
         android:name="com.dmkk.coronatracker.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_Countries"
+        android:name="com.dmkk.coronatracker.ui.ui.countries.CountriesFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
 </navigation>

@@ -30,7 +30,7 @@ public class SelectHospital extends AppCompatActivity {
         final String name = extras.getString("name");
         final String name_si = extras.getString("name_si");
 
-        list = findViewById(R.id.list);
+        list = findViewById(R.id.listSc);
 
         stringlist.add("ID: "+hospital_id);
         stringlist.add("නම: "+name_si);
