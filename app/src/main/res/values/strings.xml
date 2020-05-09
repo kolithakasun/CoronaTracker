@@ -10,6 +10,7 @@
     <string name="dead">වාර්තා වී ඇති මරණ ගණන</string>
     <string name="unsure">සැක සහිත රෝගීන් ගණන</string>
     <string name="newp">නව රෝගීන් ගණන</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">ශ්‍රිලංකාවේ රෝහල්</string>
     <string name="newdeaths">නව මරණ ගණන</string>
+    <string name="desription_notification">ශ්‍රි ලංකාවේ COVID-19 සදහා ගෙන ඇති රෝහල් සහ එහි දත්ත</string>
 </resources>
