@@ -68,4 +68,6 @@ public class selectcountry extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter<String>(selectcountry.this, android.R.layout.simple_list_item_1, stringlist);
         list.setAdapter(arrayAdapter);
     }
+
+
 }

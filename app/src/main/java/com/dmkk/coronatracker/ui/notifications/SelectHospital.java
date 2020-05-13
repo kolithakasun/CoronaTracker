@@ -34,15 +34,11 @@ public class SelectHospital extends AppCompatActivity {
 
         stringlist.add("ID: "+hospital_id);
         stringlist.add("නම: "+name_si);
-        stringlist.add("ප්‍රතිකාර ලැබූ මුලු රෝගීන් පිලිබද විස්තර");
         stringlist.add("Last Updated:   "+created_at);
-        stringlist.add("මුලු රෝගීන් ගණන: "+cumulative_total);
-        stringlist.add("මුලු ලාංකික රෝගීන් ගණන: "+cumulative_local);
-        stringlist.add("මුලු පිටරට රෝගීන් ගණන:   "+cumulative_foreign);
-        stringlist.add("දැනට ප්‍රතිකාර ලබන රෝගීන් පිලිබද විස්තර");
-        stringlist.add("ප්‍රතිකාර ලබන මුලු රෝගීන් ගණන: "+treatment_total);
-        stringlist.add("ප්‍රතිකාර ලබන ලාංකික රෝගීන් ගණන: "+treatment_local);
-        stringlist.add("ප්‍රතිකාර ලබන පිටරට රෝගීන් ගණන:   "+treatment_foreign);
+        stringlist.add("\nමුලු රෝගීන් (සැකපිට + රෝගී) \n\nමුලු රෝගීන්: "+cumulative_total+"\nලාංකික රෝගීන් ගණන: "+cumulative_local+"\nපිටරට රෝගීන් ගණන: "+cumulative_foreign);
+
+        stringlist.add("\nදැනට ප්‍රතිකාර ලබන COVID-19 ආසාධිත\n\nමුලු රෝගීන් ගණන: "+treatment_total+ "\nලාංකික රෝගීන් ගණන: "+treatment_local+ "\nපිටරට රෝගීන් ගණන:   "+treatment_foreign);
+
 
 
 

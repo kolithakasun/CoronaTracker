@@ -46,10 +46,14 @@ public class CountriesFragment extends Fragment {
     TextView editText;
     ListView list;
     ImageView refresh;
+    int s = 0;
 
     private ArrayList<countries> countryList = new ArrayList<>();
+    private ArrayList<countries> searchcountryList = new ArrayList<>();
     private ArrayList<String> stringlist = new ArrayList<>();
-    ArrayAdapter<String> arrayAdapter;
+    private ArrayList<String> emptylist = new ArrayList<>();
+    private ArrayList<String> searchstringlist = new ArrayList<>();
+    ArrayAdapter<String> arrayAdapter, searcharrayAdapter, emptyadapter;
     private NotificationsViewModel notificationsViewModel;
 
     @Nullable
@@ -62,62 +66,143 @@ public class CountriesFragment extends Fragment {
         queue = Volley.newRequestQueue(getActivity().getApplicationContext());
         editText = root.findViewById(R.id.editText);
         Button button = root.findViewById(R.id.button);
-        list = root.findViewById(R.id.list);
+        list = root.findViewById(R.id.listSc);
+        emptylist.clear();
+        emptyadapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, emptylist);
+        searcharrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, searchstringlist);
 
         onStart();
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                countries con = (countries) countryList.get(position);
-
-
-                Intent intent = new Intent(getContext(),selectcountry.class);
-                intent.putExtra("Country",countryList.get(position).country);
-                intent.putExtra("CountryCode",countryList.get(position).countrycode);
-                intent.putExtra("NewConfirmed",countryList.get(position).NewConfirmed);
-                intent.putExtra("TotalConfirmed",countryList.get(position).TotalConfirmed);
-                intent.putExtra("NewDeaths",countryList.get(position).NewDeaths);
-                intent.putExtra("TotalDeaths", countryList.get(position).TotalDeaths);
-                intent.putExtra("NewRecovered",countryList.get(position).NewRecovered);
-                intent.putExtra("TotalRecovered", countryList.get(position).TotalRecoverd);
-                intent.putExtra("Date", countryList.get(position).Date);
-                startActivity(intent);
-
-                Toast.makeText(getContext(),"Name: "+countryList.get(position).country+" Selected",Toast.LENGTH_SHORT).show();
-
-                startActivity(intent);
-            }
-        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String search = editText.getText().toString();
+                searchstringlist.clear();
+                searcharrayAdapter.notifyDataSetChanged();
 
-                for(int i = 0; i < countryList.size(); i++){
-                    if(search.equalsIgnoreCase(countryList.get(i).countrycode)||search.equalsIgnoreCase(countryList.get(i).country)){
+                searchcountryList.clear();
 
-                        Intent intent = new Intent(getContext(),selectcountry.class);
-                        intent.putExtra("Country",countryList.get(i).country);
-                        intent.putExtra("CountryCode",countryList.get(i).countrycode);
-                        intent.putExtra("NewConfirmed",countryList.get(i).NewConfirmed);
-                        intent.putExtra("TotalConfirmed",countryList.get(i).TotalConfirmed);
-                        intent.putExtra("NewDeaths",countryList.get(i).NewDeaths);
-                        intent.putExtra("TotalDeaths", countryList.get(i).TotalDeaths);
-                        intent.putExtra("NewRecovered",countryList.get(i).NewRecovered);
-                        intent.putExtra("TotalRecovered", countryList.get(i).TotalRecoverd);
-                        intent.putExtra("Date", countryList.get(i).Date);
-                        startActivity(intent);
+                searcharrayAdapter.notifyDataSetChanged();
+
+
+                 if(search.length() >= 3 ){
+                     searchstringlist.clear();
+                     searcharrayAdapter.notifyDataSetChanged();
+                    for(int i = 0; i < countryList.size(); i++){
+
+                   /*     if(search.equalsIgnoreCase(countryList.get(i).country)){
+                            countries country = countryList.get(i);
+                            // searchcountryList.add(country);
+
+                            String details = "Name: "+country.getCountry()+" \nTotal Cases: "+ country.getTotalConfirmed()+"\nTotal Recovered: "+country.getTotalRecoverd()+"\nTotal Dead: "+country.getTotalDeaths();
+                            searchstringlist.add(details);
+                            return;
+
+                        }
+                        else*/
+                            search3(search,countryList,i);
+                    }
+
+                }
+                else if(search.length() == 2){
+                     searchstringlist.clear();
+                     searcharrayAdapter.notifyDataSetChanged();
+                    for(int i = 0; i < countryList.size(); i++){
+            /*            if(search.equalsIgnoreCase(countryList.get(i).countrycode)||search.equalsIgnoreCase(countryList.get(i).country)){
+
+                            Intent intent = new Intent(getContext(),selectcountry.class);
+                            intent.putExtra("Country",countryList.get(i).country);
+                            intent.putExtra("CountryCode",countryList.get(i).countrycode);
+                            intent.putExtra("NewConfirmed",countryList.get(i).NewConfirmed);
+                            intent.putExtra("TotalConfirmed",countryList.get(i).TotalConfirmed);
+                            intent.putExtra("NewDeaths",countryList.get(i).NewDeaths);
+                            intent.putExtra("TotalDeaths", countryList.get(i).TotalDeaths);
+                            intent.putExtra("NewRecovered",countryList.get(i).NewRecovered);
+                            intent.putExtra("TotalRecovered", countryList.get(i).TotalRecoverd);
+                            intent.putExtra("Date", countryList.get(i).Date);
+                            startActivity(intent);
+
+                        }
+                        else{*/
+                            search2(search,countryList,i);
+                    //    }
+
+                    }
+                }else if(search.length() == 1){
+                     searchstringlist.clear();
+                     searcharrayAdapter.notifyDataSetChanged();
+                    for(int i = 0; i < countryList.size(); i++){
+
+                            search1(search,countryList,i);
+
 
                     }
                 }
-                Toast.makeText(getContext(),"Country Not Found, Check your spellings",Toast.LENGTH_SHORT).show();
+
+
+                if(!searchstringlist.isEmpty())
+                {
+                    s = 1;
+                    list.setAdapter(emptyadapter);
+                    list.setAdapter(searcharrayAdapter);
+
+                }
+                else {
+                    //searchstringlist.clear();
+                    searcharrayAdapter.notifyDataSetChanged();
+                    Toast.makeText(getContext(), "Country Not Found, Check your spellings", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+               if(s == 0) {
+                    countries con = (countries) countryList.get(position);
+
+
+                    Intent intent = new Intent(getContext(), selectcountry.class);
+                    intent.putExtra("Country", countryList.get(position).country);
+                    intent.putExtra("CountryCode", countryList.get(position).countrycode);
+                    intent.putExtra("NewConfirmed", countryList.get(position).NewConfirmed);
+                    intent.putExtra("TotalConfirmed", countryList.get(position).TotalConfirmed);
+                    intent.putExtra("NewDeaths", countryList.get(position).NewDeaths);
+                    intent.putExtra("TotalDeaths", countryList.get(position).TotalDeaths);
+                    intent.putExtra("NewRecovered", countryList.get(position).NewRecovered);
+                    intent.putExtra("TotalRecovered", countryList.get(position).TotalRecoverd);
+                    intent.putExtra("Date", countryList.get(position).Date);
+                    startActivity(intent);
+
+                    Toast.makeText(getContext(), "Name: " + countryList.get(position).country + " Selected", Toast.LENGTH_SHORT).show();
+
+                    startActivity(intent);
+                }
+                else{
+                    countries con = (countries) searchcountryList.get(position);
+
+
+                    Intent intent = new Intent(getContext(), selectcountry.class);
+                    intent.putExtra("Country", searchcountryList.get(position).country);
+                    intent.putExtra("CountryCode", searchcountryList.get(position).countrycode);
+                    intent.putExtra("NewConfirmed", searchcountryList.get(position).NewConfirmed);
+                    intent.putExtra("TotalConfirmed", searchcountryList.get(position).TotalConfirmed);
+                    intent.putExtra("NewDeaths", searchcountryList.get(position).NewDeaths);
+                    intent.putExtra("TotalDeaths", searchcountryList.get(position).TotalDeaths);
+                    intent.putExtra("NewRecovered", searchcountryList.get(position).NewRecovered);
+                    intent.putExtra("TotalRecovered", searchcountryList.get(position).TotalRecoverd);
+                    intent.putExtra("Date", searchcountryList.get(position).Date);
+                    startActivity(intent);
+
+                    Toast.makeText(getContext(), "Name: " + searchcountryList.get(position).country + " Selected", Toast.LENGTH_SHORT).show();
+
+                    startActivity(intent);
+               }
+            }
+        });
 
         return root;
     }
@@ -163,7 +248,7 @@ public class CountriesFragment extends Fragment {
                                 stringlist.add(details);
 
                             }
-
+                            arrayAdapter.notifyDataSetChanged();
                             list.setAdapter(arrayAdapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -180,5 +265,49 @@ public class CountriesFragment extends Fragment {
         queue.add(request);
     }
 
+    private void search3(String search, ArrayList<countries> countryList, int i){
+        if(search.substring(0,3).equalsIgnoreCase(countryList.get(i).country.substring(0,3))){
+            countries country = countryList.get(i);
+           searchcountryList.add(country);
 
-}
+            String details = "Name: "+country.getCountry()+" \nTotal Cases: "+ country.getTotalConfirmed()+"\nTotal Recovered: "+country.getTotalRecoverd()+"\nTotal Dead: "+country.getTotalDeaths();
+            searchstringlist.add(details);
+            return;
+
+
+        }
+    }
+    private void search2(String search, ArrayList<countries> countryList, int i){
+        if(search.substring(0,2).equalsIgnoreCase(countryList.get(i).country.substring(0,2))){
+            countries country = countryList.get(i);
+            searchcountryList.add(country);
+
+            String details = "Name: "+country.getCountry()+" \nTotal Cases: "+ country.getTotalConfirmed()+"\nTotal Recovered: "+country.getTotalRecoverd()+"\nTotal Dead: "+country.getTotalDeaths();
+            searchstringlist.add(details);
+            return;
+        }
+    }
+    private void search1(String search, ArrayList<countries> countryList, int i){
+        if(search.substring(0,1).equalsIgnoreCase(countryList.get(i).country.substring(0,1))){
+            countries country = countryList.get(i);
+            searchcountryList.add(country);
+
+            String details = "Name: "+country.getCountry()+" \nTotal Cases: "+ country.getTotalConfirmed()+"\nTotal Recovered: "+country.getTotalRecoverd()+"\nTotal Dead: "+country.getTotalDeaths();
+            searchstringlist.add(details);
+            return;
+
+        }
+    }
+
+    private void searchFull(String search, ArrayList<countries> countryList, int i){
+        if(search.equalsIgnoreCase(countryList.get(i).country)){
+            countries country = countryList.get(i);
+             searchcountryList.add(country);
+
+            String details = "Name: "+country.getCountry()+" \nTotal Cases: "+ country.getTotalConfirmed()+"\nTotal Recovered: "+country.getTotalRecoverd()+"\nTotal Dead: "+country.getTotalDeaths();
+            searchstringlist.add(details);
+            return;
+
+    }
+
+}}
