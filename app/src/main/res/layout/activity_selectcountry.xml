@@ -9,20 +9,17 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="258dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="78dp"
-        android:layout_marginLeft="78dp"
+        android:layout_width="335dp"
+        android:layout_height="53dp"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="75dp"
-        android:layout_marginRight="75dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:text="රෝහලේ විස්තර"
+
         android:textColor="@color/design_default_color_error"
         android:textSize="20sp"
-
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
