@@ -74,7 +74,6 @@ public class DashboardFragment extends Fragment {
                             newP.setText(api.getString("global_new_cases"));
                             hospitalized.setText(api.getString("global_new_deaths"));
                             recoverd.setText(api.getString("global_recovered"));
-                            // unsure.setText(api.getString("global_new_deaths"));
                             dead.setText(api.getString("global_deaths"));
 
 
